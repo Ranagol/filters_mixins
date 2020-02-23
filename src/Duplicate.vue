@@ -10,7 +10,9 @@
 </template>
 
 <script>
+import { fruitMixin } from './fruitMixin';
 export default {
+  mixins: [fruitMixin],
   data(){
     return {
      

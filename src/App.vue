@@ -5,19 +5,19 @@
     <p>Filtered text: {{ text | toUpperCase }}</p><!--THIS IS A RANDOM TEXT. -->
     <p>Chain filtered text: {{ text | toUpperCase | toLowerCase }}</p><!-- this is a random text. -->
     <input v-model="filterText">
-    <p>This is the unfiltered version of fruits</p>
-    <ul>
-        <li v-for="fruit in fruits">{{ fruit }}</li>
-    </ul>
     <p>This is the filtered version of fruits</p>
     <ul>
         <li v-for="fruit in filteredFruits">{{ fruit }}</li>
     </ul>
+    <app-duplicate></app-duplicate>
   </div>
 </template>
 
 <script>
+import Duplicate from './Duplicate.vue';
+import { fruitMixin } from './fruitMixin';
 export default {
+  mixins: [fruitMixin],
   name: 'app',
   data(){
     return {
@@ -25,12 +25,14 @@ export default {
     }
   },
 
- 
-
   filters: {//this is a locally defined filter
     toUpperCase(value){
       return value.toUpperCase();
     }
+  },
+
+  components: {
+    'app-duplicate': Duplicate,
   }
 }
 </script>
